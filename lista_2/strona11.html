@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="utf-8">
+    <title>strona11</title>
+</head>
+<body>
+    <div>
+        <div>
+            <img src="a1.jpg" height="500px">
+        </div>
+        <button onclick="poprzedni()">Poprzednie</button>
+        <button onclick="kolejny()">Następne</button>
+    </div>
+    <script>
+        var i = 1;
+        function kolejny()
+        {    
+            if(i==10)
+            {  
+                i = 1;
+                document.images[0].src="a"+i+".jpg";
+            }
+            else
+            {   
+                i = i + 1;
+                document.images[0].src="a"+i+".jpg";
+            }
+        }
+        function poprzedni()
+        {
+            if(i==1)
+            {   
+                i = 10;
+                document.images[0].src="a"+i+".jpg";   
+            }
+            else
+            {    
+                i = i - 1;
+                document.images[0].src="a"+i+".jpg";   
+            }
+        }
+    </script>
+</body>
+</html>

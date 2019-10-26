@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="pl">
+	<head>
+		<meta charset="utf-8">
+		<title>strona5</title>
+		<style>
+			table.A {border: 5px solid green;	background-color:gray;	font-family: 'arial'}
+			table.A th	{border:1px solid black;	background-color:yellow;	text-align:	center;	font-weight:	bold;}
+			table.A td	{font-style:	italic;	border:1px solid black;}
+			table.A tr	{border:1px solid black;}
+			table.B {border: 5px solid blue;	background-color:silver;	font-family:	'times new roman'}
+			table.B th	{border:1px solid black;	background-color:aqua;	text-align:	center;	font-weight:	100;}
+			table.B td	{font-style:	normal;	border:1px solid black;}
+			table.B tr	{border:1px solid black;}
+		</style>
+	</head>
+	<body>
+		<table class="A">
+		<tr><th colspan="4">Cennik biletów</th></tr>
+		<tr><td>Strefa</td><td>Jednodniowy</td><td>Miesięczny</td><td>Roczny</td></tr>
+		<tr><td>1</td><td>4zł</td><td>20zł</td><td rowspan="2">300zł</td></tr>
+		<tr><td>2</td><td>3zł</td><td>15zł</td></tr>
+		</table>
+		<table class="B">
+		<tr><th	colspan="7">Rozkład jazdy</th></tr>
+		<tr><td>Linia</td><td colspan="3">Dni robocze</td><td colspan="2">Soboty</td><td>Niedziele i święta</td></tr>
+		<tr><td>Linia A</td><td>10:00</td><td>14:00</td><td>16:00</td><td>10:00</td><td>14:00</td><td>nie kursuje</td></tr>
+		<tr><td>Linia B</td><td>13:00</td><td>15:30</td><td>17:00</td><td>07:00</td><td>12:00</td><td>nie kursuje</td></tr>
+		<tr><td>Linia C</td><td>8:00</td><td>11:15</td><td>19:30</td><td>12:00</td><td>18:15</td><td>15:00</td></tr>
+		</table>
+	</body>
+</html>

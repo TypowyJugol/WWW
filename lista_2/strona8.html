@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="pl">
+	<head>
+		<meta charset="utf-8">
+		<title>strona8</title>
+		<style>
+		#wynik	{border: 1px solid black; margin: 10px;	padding:	5px;	color:	green;}
+		</style>
+	</head>
+	<body>
+		<input onchange="document.getElementById('wynik').innerHTML+='<br>'+this.value+'='+eval(this.value)">
+		<button onclick="location=location">Wyczyść</button>
+		<div id="wynik">
+			<b>Wyniki:</b>
+		</div>
+	</body>
+</html>
+
