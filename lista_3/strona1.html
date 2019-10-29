@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="pl">
+	<head>
+		<meta charset="utf-8">
+		<title>strona1</title>
+	</head>
+	<body>
+		<button onclick="funA()">Witaj</button>
+		<button	onclick="funB1()">1 .. 100</button>
+		<button onclick="funB2()">1 .. n</button>
+		<button onclick="funB3()">Wielokrotności</button>
+		<button onclick="funC1()">ukryj</button>
+		<button onclick="funC2()">pokaz</button>
+		<button onclick="funD()">Przesun w losowe miejsce</button>
+		<div id="ramka"></div>
+		<img id="foton" src='...'/>
+		n=<input name="n" value=3 type=number>
+		<script>
+		var x=document.getElementById("ramka");
+		var	y=document.querySelector("input").value;
+		
+		function funA()
+		{
+			x.innerHTML="Dzien dobry";
+		}
+		function funB1()
+		{
+			for (let i=1;i<=100;i++)
+			{
+				x.innerHTML+=i;
+			}	
+		}
+		function funB2()
+		{
+			for (let i=1;i<=y;i++)
+			{
+				x.innerHTML+=i;
+			}
+		}
+		function funB3()
+		{
+			for (let i=1;i<100;i++)
+			{
+				s=i*y
+				x.innerHTML+=s;
+			}
+		}
+		function funC1()
+		{
+			this.style.display="none";
+		}
+		function funC2()
+		{
+			x.style.display="block";
+		}
+		function funD()
+		{
+			x.style.left=''+(Math.random()*100)+'%'
+		}
+		</script>
+	</body>
+</html>
+
+
