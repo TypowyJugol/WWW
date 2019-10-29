@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="pl">
+    <head>
+        <meta charset="utf-8">
+        <title>strona2</title>
+    </head>
+    <body>
+        <p onclick="fun1()">Jeszcze nie kliknięty</p>
+    </body>
+    <script>
+        var i=1;
+        function fun1()
+        {
+            var x=document.querySelector("p");
+            x.innerHTML="Klikniety po raz:"+i;
+            i++;
+        }
+    </script>
+</html>

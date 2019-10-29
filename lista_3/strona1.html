@@ -3,6 +3,9 @@
 	<head>
 		<meta charset="utf-8">
 		<title>strona1</title>
+		<style>
+			div {color:lime; display:none}
+		</style>
 	</head>
 	<body>
 		<button onclick="funA()">Witaj</button>
@@ -13,11 +16,12 @@
 		<button onclick="funC2()">pokaz</button>
 		<button onclick="funD()">Przesun w losowe miejsce</button>
 		<div id="ramka"></div>
-		<img id="foton" src='...'/>
+		<img id="foton" src="foton.jpg" height="100px">
 		n=<input name="n" value=3 type=number>
 		<script>
 		var x=document.getElementById("ramka");
 		var	y=document.querySelector("input").value;
+		var zdjecie=document.getElementById("foton");
 		
 		function funA()
 		{
@@ -47,7 +51,7 @@
 		}
 		function funC1()
 		{
-			this.style.display="none";
+			x.style.display="none";
 		}
 		function funC2()
 		{
@@ -55,7 +59,8 @@
 		}
 		function funD()
 		{
-			x.style.left=''+(Math.random()*100)+'%'
+			zdjecie.style.marginLeft=Math.random()*100+"%";
+			zdjecie.style.marginTop=Math.random()*100+"%";
 		}
 		</script>
 	</body>
