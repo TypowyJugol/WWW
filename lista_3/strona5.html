@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+    <meta charset="utf-8">
+    <title>Strona7</title>
+    <style>
+        td {
+            width: 40px;
+            height: 40px;
+            border: 1px solid grey;
+        }
+
+        /* ta linia oznacza parametry wygenerowanych komórek(ich wysokość-height, szerokość-width, grubość obramowania-border oraz jego kolor-solid) */
+        table {
+            border-collapse: collapse
+        }
+
+        /* ta linia oznacza typ obramowania(collapse-komórki mają wspólne obramowanie, separate-komórki mają osobne obramowanie) */
+        tr:nth-child(odd) td:nth-child(odd) {
+            background: #ddd
+        }
+
+        /* ta linia oznacza dodatkowe własności wierszy(tr) i kolumn(td), w tym wypadku odd-nieparzysty(wiersz i kolumna) oraz tło komórek(background), atrybut #ddd- oznacza kolor jasnoszary */
+        tr:nth-child(even) td:nth-child(even) {
+            background: #ddd
+        }
+
+        /* to co w poprzedniej linii, tym razem chodzi o parzyste wiersze i parzyste kolumny	*/
+    </style>
+</head>
+
+<body>
+    <ol>
+        <li><a href="strona1.html">strona1</a></li>
+        <li><a href="strona2.html">strona2</a></li>
+        <li><a href="strona3.html">strona3</a></li>
+        <li><a href="strona4.html">strona4</a></li>
+        <li><a href="strona5.html">strona5</a></li>
+        <li><a href="strona6.html">strona6</a></li>
+        <li><a href="strona7.html">strona7</a></li>
+        <li><a href="strona9.html">strona9</a></li>
+    </ol>
+    <table>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+    </table>
+    <button onclick="f()">Liczby</button>
+    <button onclick="zc()">Kolor tła</button>
+    <button onclick="td()">Komórka na końcu</button>
+    <button onclick="th()">Komórka na początku</button>
+    <button onclick="czysc()">Czyść</button>
+    <button onclick="czysctlo()">Czyść tło</button>
+    <button onclick="czyscwiersze()">Czyść wiersze</button>
+</body>
+<script>
+    var komorki = document.querySelectorAll("td");
+    var tr = document.querySelectorAll("tr");
+    function f() {
+        for (i = 0; i < komorki.length; i++) {
+            komorki[i].innerText = i;
+        }
+    }
+    function zc() {
+        for (i = 0; i < komorki.length; i = i + 2) {
+            komorki[i].style.background = "green";
+        }
+        for (i = 1; i < komorki.length; i = i + 2) {
+            komorki[i].style.background = "red";
+        }
+    }
+    function td() {
+        for (i = 0; i < tr.length; i++) {
+            var td = document.createElement("td");
+            tr[i].appendChild(td);
+        }
+    }
+    function th() {
+        for (i = 0; i < tr.length; i++) {
+            var th = document.createElement("th");
+            tr[i].insertAdjacentElement("afterbegin", th);
+        }
+    }
+    function czysc() {
+        for (i = 0; i < komorki.length; i++) {
+            komorki[i].innerText = "";
+        }
+    }
+    function czysctlo() {
+        for (i = 0; i < komorki.length; i = i + 2) {
+            komorki[i].style.background = "grey";
+        }
+        for (i = 1; i < komorki.length; i = i + 2) {
+            komorki[i].style.background = "white";
+        }
+    }
+    function czyscwiersze() {
+        for (i = 0; i < tr.length; i++) {
+            tr[i].innerText = "";
+        }
+    }
+
+</script>
+
+</html>

@@ -1,69 +1,63 @@
 <!DOCTYPE html>
 <html lang="pl">
-	<head>
-		<meta charset="utf-8">
-		<title>strona1</title>
-		<style>
-			div {color:lime; display:none}
-		</style>
-	</head>
-	<body>
-		<button onclick="funA()">Witaj</button>
-		<button	onclick="funB1()">1 .. 100</button>
-		<button onclick="funB2()">1 .. n</button>
-		<button onclick="funB3()">Wielokrotności</button>
-		<button onclick="funC1()">ukryj</button>
-		<button onclick="funC2()">pokaz</button>
-		<button onclick="funD()">Przesun w losowe miejsce</button>
-		<div id="ramka"></div>
-		<img id="foton" src="foton.jpg" height="100px">
-		n=<input name="n" value=3 type=number>
-		<script>
-		var x=document.getElementById("ramka");
-		var	y=document.querySelector("input").value;
-		var zdjecie=document.getElementById("foton");
-		
-		function funA()
-		{
-			x.innerHTML="Dzien dobry";
+
+<head>
+	<meta charset="utf-8" />
+	<title>strona1</title>
+	<style>
+		div {
+			color: lime;
+			display: none;
 		}
-		function funB1()
-		{
-			for (let i=1;i<=100;i++)
-			{
-				x.innerHTML+=i;
-			}	
+	</style>
+</head>
+
+<body>
+	<button onclick="funA()">Witaj</button>
+	<button onclick="funB1()">1 .. 100</button>
+	<button onclick="funB2()">1 .. n</button>
+	<button onclick="funB3()">Wielokrotności</button>
+	<button onclick="funC1()">ukryj</button>
+	<button onclick="funC2()">pokaz</button>
+	<button onclick="funD()">Przesun w losowe miejsce</button>
+	<div id="ramka"></div>
+	<img id="foton" src="foton.jpg" height="100px" />
+	n=<input name="n" value="3" type="number" />
+	<script>
+		var x = document.getElementById("ramka");
+		var y = document.querySelector("input").value;
+		var zdjecie = document.getElementById("foton");
+
+		function funA() {
+			x.innerHTML = "Dzien dobry";
 		}
-		function funB2()
-		{
-			for (let i=1;i<=y;i++)
-			{
-				x.innerHTML+=i;
+		function funB1() {
+			for (let i = 1; i <= 100; i++) {
+				x.innerHTML += i;
 			}
 		}
-		function funB3()
-		{
-			for (let i=1;i<100;i++)
-			{
-				s=i*y
-				x.innerHTML+=s;
+		function funB2() {
+			for (let i = 1; i <= y; i++) {
+				x.innerHTML += i;
 			}
 		}
-		function funC1()
-		{
-			x.style.display="none";
+		function funB3() {
+			for (let i = 1; i < 100; i++) {
+				s = i * y;
+				x.innerHTML += s;
+			}
 		}
-		function funC2()
-		{
-			x.style.display="block";
+		function funC1() {
+			x.style.display = "none";
 		}
-		function funD()
-		{
-			zdjecie.style.marginLeft=Math.random()*100+"%";
-			zdjecie.style.marginTop=Math.random()*100+"%";
+		function funC2() {
+			x.style.display = "block";
 		}
-		</script>
-	</body>
+		function funD() {
+			zdjecie.style.marginLeft = Math.random() * 100 + "%";
+			zdjecie.style.marginTop = Math.random() * 100 + "%";
+		}
+	</script>
+</body>
+
 </html>
-
-

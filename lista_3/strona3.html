@@ -1,19 +1,50 @@
 <!DOCTYPE html>
 <html lang="pl">
-    <head>
-        <meta charset="utf-8">
-        <title>strona3</title>
-        <style>
-            button {position:relative;}
-        </style>
-    </head>
-    <body>
-        <button style="margin-top:0% margin-left:50%">Gora</button>
-        <button style="margin-bottom:0% margin-left:50%">Dol</button>
-        <button style="margin-left:0% margin-top:50%">Lewo</button>
-        <button style="margin-right:0% margin-top:50%">Prawo</button>
-        <p style="text-align:center">
-            <img id="obrazek" src="supra.jpg" height="100px">
-        </p>
-    </body>
+
+<head>
+    <meta charset="utf-8" />
+    <title>strona3</title>
+    <style>
+        button {
+            position: absolute;
+        }
+
+        img {
+            position: absolute;
+        }
+    </style>
+</head>
+
+<body>
+    <button style="top:0%; left:50%" onclick="gora()">Gora</button>
+    <button style="top:100%; left:50%" onclick="dol()">Dol</button>
+    <button style="top:50%; left:0%" onclick="lewo()">Lewo</button>
+    <button style="top:50%; left:100%" onclick="prawo()">Prawo</button>
+    <img style="top:50%; left:50%;" id="obrazek" src="supra.jpg" height="250px" onclick="zniknij()" />
+</body>
+<script>
+    var y = 0;
+    var x = 0;
+    var zdjecie = document.getElementById("obrazek");
+    function gora() {
+        y = y - 10;
+        zdjecie.style.transform = "translateY(" + y + "px)";
+    }
+    function dol() {
+        y = y + 10;
+        zdjecie.style.transform = "translateY(" + y + "px)";
+    }
+    function lewo() {
+        x = x - 10;
+        zdjecie.style.transform = "translateX(" + x + "px)";
+    }
+    function prawo() {
+        x = x + 10;
+        zdjecie.style.transform = "translateX(" + x + "px)";
+    }
+    function zniknij() {
+        zdjecie.style.display = "none";
+    }
+</script>
+
 </html>

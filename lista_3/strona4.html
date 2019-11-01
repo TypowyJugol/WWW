@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+    <meta charset="utf-8" />
+    <title>strona4</title>
+    <style>
+        p:nth-child(5n) {
+            color: yellow;
+            background: black;
+        }
+    </style>
+</head>
+
+<body>
+    <p>uno</p>
+    <p>dos</p>
+    <p>tres</p>
+    <p>cuatro</p>
+    <p>cinco</p>
+    <p>seis</p>
+    <p>siete</p>
+    <p>ocho</p>
+    <p>nueve</p>
+    <p>diez</p>
+    <p>once</p>
+    <p>doce</p>
+    <p>trece</p>
+    <p>catorce</p>
+    <p id="ostatni">quince</p>
+    <button onclick="pierwsza()">OK</button>
+    <button onclick="druga()">Drugi</button>
+    <button onclick="trzeci()">Trzeci</button>
+</body>
+<script>
+
+    var paragrafy = document.querySelectorAll("p");
+
+    function pierwsza() {
+        for (i = 0; i < paragrafy.length; i++) {
+            paragrafy[i].style.color = "black";
+            paragrafy[i].style.background = "0";
+        }
+    }
+    function druga() {
+        for (i = 0; i < paragrafy.length; i = i + 3) {
+            paragrafy[i].style.color = "blue";
+            paragrafy[i].style.background = "pink";
+        }
+    }
+    function trzeci() {
+        var kopia = document.createElement("p");
+        var x = document.getElementById("ostatni").innerHTML;
+        kopia.innerText = x;
+        var body = document.querySelector("body");
+        body.appendChild(kopia);
+    }
+</script>
+
+</html>
