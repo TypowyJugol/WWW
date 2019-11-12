@@ -42,29 +42,21 @@
 <body>
 </body>
 
-<h1>Piłeczki</h1>
+<h1>Samoloty</h1>
 <p id="licz" style="text-align: center;"></p>
+<p id="czas" style="text-align: center;"></p>
 <div id='ramka'>
-    <b></b>
-    <b></b>
-    <b></b>
-    <b></b>
-    <b></b>
-    <b></b>
-    <b></b>
-    <b></b>
-    <b></b>
-    <b></b>
-    <b></b>
-    <b></b>
     <b></b>
     <b></b>
     <b></b>
 </div>
 
 <div>
-    <button onclick="run=false"> Stop </button>
+    <button onclick="run=false;"> Stop </button>
     <button onclick="run=true;step()"> Start </button>
+    <button onclick="nowa()"> Nowa gra </button>
+    <button onclick="p1()"> Poziom 1 </button>
+    <button onclick="p2()"> Poziom 2 </button>
 </div>
 
 
@@ -73,8 +65,9 @@
     var run = false;
     var i;
     var y;
-    var elementy = document.querySelectorAll("b");
-    document.getElementById("licz").innerText = "Ilość piłeczek: " + elementy.length;
+    var liczba = b.length;
+    var czas = 0;
+    var p1 = true;
     for (i = 0; i < b.length; i++) {
         b[i].x = Math.random() * 580;
         b[i].y = Math.random() * 580;
@@ -86,11 +79,12 @@
         b[i].style.top = b[i].y + "px";
         b[i].innerHTML = "<img src=samolot.png>";
 
-        b[i].onclick = stop;
+        b[i].onmousedown = stop;
     }
 
     function step() {
         var i;
+        licznik();
         for (i = 0; i < b.length; i++) {
             b[i].x += b[i].vx;
             b[i].y += b[i].vy;
@@ -103,26 +97,64 @@
             b[i].style.transform = "rotate(" + Math.atan2(b[i].vy, b[i].vx) * 60 + "deg)";
         }
 
-        if (run)
-            setTimeout(step, 20);
-
-    }
-
-    function znik() {
-        this.style.display = "none";
-    }
-
-    function f2() {
-        for (y = 0; y < b.length; y++) {
-            b[y].onclick = "znik()";
+        if (run) {
+            if (p1 = true) {
+                setTimeout(step, 60);
+            }
+            else {
+                setTimeout(step, 20);
+            }
         }
     }
 
 
+    function licznik() {
+        document.getElementById("licz").innerText = "Ilość samolotów: " + liczba;
+    }
+
     function stop() {
         this.vx = 0;
         this.vy = 0;
+        liczba--;
+        if (liczba == 0) alert("Mission completed in: " + czas);
     }
+    setInterval(function () {
+        if (run == true) {
+            czas = czas + 0.1;
+        }
+        document.getElementById("czas").innerText = "Czas: " + czas;
+    }, 100)
+
+    function nowa() {
+        for (let i = 0; i < b.length; i++) {
+            b[i].style.display = "block";
+            b[i].vx = 0;
+            b[i].vy = 0;
+        }
+        var i;
+        for (i = 0; i < b.length; i++) {
+            b[i].x = Math.random() * 580;
+            b[i].y = Math.random() * 580;
+            b[i].vx = Math.random() * 20 - 10;
+            b[i].vy = Math.random() * 20 - 10;
+
+            b[i].style.left = b[i].x + "px";
+            b[i].style.top = b[i].y + "px";
+            b[i].onclick = stop;
+        }
+        liczba = b.length;
+        run = false;
+        czas = 0;
+    }
+
+    function p1() {
+        p1 = true;
+    }
+
+    function p2() {
+        p1 = false;
+    }
+
 </script>
 
 </html>
