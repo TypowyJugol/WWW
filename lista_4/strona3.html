@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>strona4</title>
+    <meta charset="utf-8">
+</head>
+
+<body>
+    <div id="lista"></div>
+</body>
+<script>
+    var div=document.getElementById("lista");
+    var s=" ";
+    var s2=" ";
+
+    var student = [
+        { imie: "Ola", nazwisko: "Lis", kierunek: "fizyka" },
+        { imie: "Ala", nazwisko: "Góral", kierunek: "chemia" },
+        { imie: "Janusz", nazwisko: "Nowak", kierunek: "biologia" },
+        { imie: "Magda", nazwisko: "Kwiatkowska", kierunek: "prawo" },
+        { imie: "Karol", nazwisko: "Wadera", kierunek: "informatyka" },
+        { imie: "Piotr", nazwisko: "Kowalski", kierunek: "astronomia" },
+        { imie: "Filip", nazwisko: "Malinowski", kierunek: "matematyka" },
+        { imie: "Julia", nazwisko: "Nowacka", kierunek: "dziennikarstwo" },
+        { imie: "Zbigniew", nazwisko: "Kręcina", kierunek: "budownictwo" }];
+    
+    function wszyscy(){
+        s+="<h2>Studenci</h2>";
+        s+="<ol>";
+        for (i=0;i<student.length;i++){
+            s+="<li>";
+            s+=student[i].imie+" "+student[i].nazwisko+" "+student[i].kierunek;
+            s+="</li>";
+        }
+        s+="</ol>";
+
+        div.innerHTML=s;
+    }
+
+    function pokaz(kierunek){
+        s2+="<h2>";
+        s2
+    }
+
+    wszyscy();
+
+</script>
+
+</html>
