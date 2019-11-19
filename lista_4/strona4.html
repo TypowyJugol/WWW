@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>strona4</title>
+    <meta charset="utf-8">
+</head>
+
+<body>
+    <div id="lista"></div>
+    <button onclick="wszyscy()">Wszyscy</button>
+    <button onclick="pokaz('fizyka')">Fizyka</button>
+    <button onclick="pokaz('informatyka')">Informatyka</button>
+    <button onclick="pokaz('prawo')">Prawo</button>
+    <button onclick="pokaz('matematyka')">Matematyka</button>
+</body>
+<script>
+    var div=document.getElementById("lista");
+    var s=" ";
+    var s2=" ";
+
+    var student = [
+        { imie: "Ola", nazwisko: "Lis", kierunek: "fizyka" },
+        { imie: "Ala", nazwisko: "Góral", kierunek: "prawo" },
+        { imie: "Janusz", nazwisko: "Nowak", kierunek: "informatyka" },
+        { imie: "Magda", nazwisko: "Kwiatkowska", kierunek: "prawo" },
+        { imie: "Karol", nazwisko: "Wadera", kierunek: "informatyka" },
+        { imie: "Piotr", nazwisko: "Kowalski", kierunek: "prawo" },
+        { imie: "Filip", nazwisko: "Malinowski", kierunek: "matematyka" },
+        { imie: "Julia", nazwisko: "Nowacka", kierunek: "fizyka" },
+        { imie: "Zbigniew", nazwisko: "Kręcina", kierunek: "matematyka" }];
+    
+    function wszyscy(){
+        s+="<h2>Studenci</h2>";
+        s+="<ol>";
+        for (i=0;i<student.length;i++){
+            s+="<li>";
+            s+=student[i].imie+" "+student[i].nazwisko+" "+student[i].kierunek;
+            s+="</li>";
+        }
+        s+="</ol>";
+
+        div.innerHTML=s;
+        s="";
+    }
+
+    function pokaz(x){
+        s2+="<h2>"+x+"</h2>";
+        s2+="<ol>";
+        for (i=0;i<student.length;i++){
+            if(student[i].kierunek==x){
+                s2+="<li>";
+                s2+=student[i].imie+" "+student[i].nazwisko;
+                s2+="</li>";
+            }
+        }
+        s2+="</ol>"
+        div.innerHTML=s2;
+        s2=""
+    }
+
+</script>
+
+</html>

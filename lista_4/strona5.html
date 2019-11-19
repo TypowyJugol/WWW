@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>strona5</title>
+    <meta charset="utf-8">
+</head>
+
+<body>
+    <div id="lista"></div>
+    <button onclick="wszyscy()">Wszyscy</button>
+    <button onclick="pokaz('fizyka');liczba('fizyka');">Fizyka</button>
+    <button onclick="pokaz('informatyka');liczba('informatyka');">Informatyka</button>
+    <button onclick="pokaz('prawo');liczba('prawo');">Prawo</button>
+    <button onclick="pokaz('matematyka');liczba('matematyka');">Matematyka</button>
+    <button onclick="chuj()">Dane</button>
+    <p></p>
+</body>
+<script>
+    var div=document.getElementById("lista");
+    var s=" ";
+    var s2="";
+    var ilosc=0;
+    var p=document.getElementsByTagName("p");
+    var dane=[];
+    var przedmioty=["fizyka","informatyka","matematyka","prawo"];
+    
+    var student = [
+        { imie: "Ola", nazwisko: "Lis", kierunek: "fizyka" },
+        { imie: "Ala", nazwisko: "Góral", kierunek: "prawo" },
+        { imie: "Janusz", nazwisko: "Nowak", kierunek: "informatyka" },
+        { imie: "Magda", nazwisko: "Kwiatkowska", kierunek: "prawo" },
+        { imie: "Karol", nazwisko: "Wadera", kierunek: "informatyka" },
+        { imie: "Piotr", nazwisko: "Kowalski", kierunek: "prawo" },
+        { imie: "Filip", nazwisko: "Malinowski", kierunek: "matematyka" },
+        { imie: "Julia", nazwisko: "Nowacka", kierunek: "fizyka" },
+        { imie: "Zbigniew", nazwisko: "Kręcina", kierunek: "matematyka" }];
+    
+    function wszyscy(){
+        s+="<h2>Studenci</h2>";
+        s+="<ol>";
+        for (i=0;i<student.length;i++){
+            s+="<li>";
+            s+=student[i].imie+" "+student[i].nazwisko+" "+student[i].kierunek;
+            s+="</li>";
+        }
+        s+="</ol>";
+
+        div.innerHTML=s;
+        s="";
+    }
+
+    function pokaz(x){
+        s+="<h2>"+x+"</h2>";
+        s+="<ol>";
+        for (i=0;i<student.length;i++){
+            if(student[i].kierunek==x){
+                s+="<li>";
+                s+=student[i].imie+" "+student[i].nazwisko;
+                s+="</li>";
+            }
+        }
+        s+="</ol>"
+        div.innerHTML=s;
+        s=""
+    }
+
+    function liczba(asd){
+        for (i=0;i<student.length;i++){
+            if (student[i].kierunek==asd){
+                ilosc++;
+            }
+        }
+        div.innerHTML+="Ilosc osób na kierunku "+asd+" to "+ilosc;
+        ilosc=0;
+    }
+
+    function dane(){
+
+        for (i=0;i<student.length;i++){
+            if (student[i].kierunek=="fizyka"){
+                ilosc++;
+            }
+        }
+        var ifiz=ilosc;
+
+        ilosc=0;
+        for (i=0;i<student.length;i++){
+            if (student[i].kierunek=="informatyka"){
+                ilosc++;
+            }
+        }
+        var ii=ilosc;
+       
+        ilosc=0;
+        for (i=0;i<student.length;i++){
+            if (student[i].kierunek=="matematyka"){
+                ilosc++;
+            }
+        }
+        var im=ilosc;
+       
+        ilosc=0;
+        for (i=0;i<student.length;i++){
+            if (student[i].kierunek=="prawo"){
+                ilosc++;
+            }
+        }
+        var ip=ilosc;
+       
+        ilosc=0;
+
+        dane.push({fizyka:ifiz,informatyka:ii,matematyka:im,prawo:ip});
+    }
+
+    dane();
+
+</script>
+
+</html>
