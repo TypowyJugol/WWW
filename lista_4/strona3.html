@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+	<title>strona3</title>
+	<meta charset="utf-8">
+	<style>
+		h1 {
+			font-size: 50px
+		}
+
+		#cel,
+		#cel2,
+		#x,
+		#x2 {
+			font-size: 50px
+		}
+
+		button {
+			font-size: 20px
+		}
+
+		h1,
+		div {
+			text-align: center
+		}
+
+		div {
+			font-size: 30px
+		}
+
+		span {
+			background: yellow;
+			border: 1px solid grey;
+			border-radius: 5px;
+			margin: 10px;
+			padding: 10px;
+			line-height: 80px;
+
+		}
+	</style>
+</head>
+
+<body>
+	<h1>Binary</h1>
+
+	<div id='cel'></div>
+	<div id='x'></div>
+
+	<div>
+		<span onclick='razy()'>*2</span> <span id='dodaj'>+1</span>
+	</div>
+
+	<div>
+		<button onclick='losuj(100)'>Do 100</button>
+		<button onclick='losuj(1000)'>Do 1000</button>
+		<button onclick='losuj(10000)'>Do 10000</button>
+		<button onclick='losuj(100000)'>Do 10000</button>
+		<button onclick='losuj(1000000)'>Do 100000</button>
+	</div>
+
+	<div>
+		Otrzymaj podaną liczbę z jedynki za pomocą mnożenia przez 2 i dodawania jedynki.
+		<br />
+		<b>
+			Uwaga: nie można wykonać dwóch dodawań bezpośrednio po sobie.
+		</b>
+		<br />
+		<br /> Instrukcja do gry binary
+		<p>Aby wygrać w tą grę należy od wyniku który mamy otrzymać odjąć 1, jeżeli liczba jest nieparzysta lub
+			podzielić przez 2 jeśli liczba jest parzysta. Od otrzymanej liczby odjąć jeden jeżeli jest nieparzysta lub
+			podzielić przez 2 jeżeli jest parzysta. Czynnośći powtarzać aż do otrzymania liczby jeden. Odwrócić
+			kolejność wykonanych operacji(pierwsze działanie wykonujemy na końcu, a ostatnie na początku), a następnie
+			wykonać w grze operacje przeciwne(jeżeli odejmowaliśmy jeden, teraz będziemy dodawać, jeżeli dzieliliśmy tym
+			razem mnożymy).</p>
+	</div>
+
+	<h1>Ternary</h1>
+
+	<div id='cel2'></div>
+	<div id='x2'></div>
+
+	<div>
+		<span onclick='razy3()'>*3</span> <span id='dodaj2'>+2</span> <span id='dodaj1'>+1</span>
+	</div>
+
+	<div>
+		<button onclick='losuj(100)'>Do 100</button>
+		<button onclick='losuj(1000)'>Do 1000</button>
+		<button onclick='losuj(10000)'>Do 10000</button>
+		<button onclick='losuj(100000)'>Do 10000</button>
+		<button onclick='losuj(1000000)'>Do 100000</button>
+	</div>
+	<div>
+		Otrzymaj podaną liczbę z jedynki za pomocą mnożenia przez 3 i dodawania jedynki lub dwójki.
+		<br />
+		<b>
+			Uwaga: nie można wykonać dwóch dodawań bezpośrednio po sobie.
+		</b>
+		<br />
+		<br /> Instrukcja do gry ternary
+		<p>Aby wygrać w tą grę należy od wyniku który mamy otrzymać odjąć 1 lub 2(tak, aby dostać w wyniku tej operacji
+			liczbę podzielną przez 3), jeżeli liczba jest niepodzielna przez 3 lub
+			podzielić przez 3 jeśli liczba jest podzielna przez 3. Od otrzymanej liczby odjąć 1 lub 2, jeżeli jest
+			niepodzielna przez 3 lub
+			podzielić przez 3 jeżeli jest podzielna. Czynnośći powtarzać aż do otrzymania liczby jeden. Odwrócić
+			kolejność wykonanych operacji(pierwsze działanie wykonujemy na końcu, a ostatnie na początku), a następnie
+			wykonać w grze operacje przeciwne(jeżeli odejmowaliśmy, teraz będziemy dodawać, jeżeli dzieliliśmy tym
+			razem mnożymy).</p>
+	</div>
+
+	<script>
+
+		var cel = document.querySelector('#cel');
+		var x = document.querySelector('#x');
+		var dodaj = document.querySelector('#dodaj');
+		var cel2 = document.querySelector('#cel2');
+		var x2 = document.querySelector('#x2');
+		var dodaj2 = document.querySelector('#dodaj2');
+
+		losuj(100);
+
+		function losuj(n) {
+			cel.innerHTML = Math.ceil(Math.random() * n);
+			cel2.innerHTML = Math.ceil(Math.random() * n);
+			x.innerHTML = 1;
+			x2.innerHTML = 1;
+			dodaj.onclick = null;
+			dodaj.style.background = 'grey';
+			dodaj1.onclick = null;
+			dodaj1.style.background = 'grey';
+			dodaj2.onclick = null;
+			dodaj2.style.background = 'grey';
+
+		}
+
+		function razy() {
+			x.innerHTML *= 2;
+			sprawdz();
+			dodaj.onclick = plus;
+			dodaj.style.background = '';
+		}
+		function razy3() {
+			x2.innerHTML *= 3;
+			sprawdz();
+			dodaj2.onclick = plus2;
+			dodaj2.style.background = '';
+			dodaj1.onclick = plus1;
+			dodaj1.style.background = '';
+		}
+
+		function plus() {
+			x.innerHTML = Number(x.innerHTML) + 1;
+			sprawdz();
+			dodaj.onclick = null;
+			dodaj.style.background = 'grey';
+		}
+		function plus1() {
+			x2.innerHTML = Number(x2.innerHTML) + 1;
+			sprawdz();
+			dodaj1.onclick = null;
+			dodaj1.style.background = 'grey';
+		}
+		function plus2() {
+			x2.innerHTML = Number(x2.innerHTML) + 2;
+			sprawdz();
+			dodaj2.onclick = null;
+			dodaj2.style.background = 'grey';
+		}
+
+
+		function sprawdz() {
+			if (Number(x.innerHTML) > Number(cel.innerHTML))
+				cel.innerHTML = 'Niestety przegrałeś';
+			if (Number(x.innerHTML) == Number(cel.innerHTML))
+				cel.innerHTML = 'Gratuluję wygranej!!!';
+			if (Number(x2.innerHTML) > Number(cel2.innerHTML))
+				cel2.innerHTML = 'Niestety przegrałeś';
+			if (Number(x2.innerHTML) == Number(cel2.innerHTML))
+				cel2.innerHTML = 'Gratuluję wygranej!!!';
+		}
+
+	</script>
+
+</body>
+
+</html>
