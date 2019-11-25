@@ -49,6 +49,10 @@
     <button onclick="pokaz('matematyka');liczba('matematyka');">Matematyka</button>
     <button onclick="liczkierunki()">Dane</button>
     <button onclick="wykres(dane)">Wykres</button>
+    <button onclick="dodaj()">Dodaj studenta</button>
+    <input type="text" id="imie"  value="Podaj imie">
+    <input type="text" id="nazwisko"  value="Podaj nazwisko">
+    <input type="text" id="kierunek" value="Podaj kierunek">
     <p></p>
 </body>
 <script>
@@ -155,7 +159,12 @@
         s += "</div>";
         div.innerHTML = s;
     }
-
+    function dodaj() {
+        var im = document.getElementById("imie").value;
+        var naz = document.getElementById("nazwisko").value;
+        var kier = document.getElementById("kierunek").value;
+        student.push({imie: im, nazwisko: naz, kierunek: kier});
+    }
 </script>
 
 </html>
