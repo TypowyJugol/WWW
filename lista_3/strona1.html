@@ -25,7 +25,7 @@
 	n=<input name="n" value="3" type="number" />
 	<script>
 		var x = document.getElementById("ramka");
-		var y = document.querySelector("input").value;
+		var y = document.querySelector("input");
 		var zdjecie = document.getElementById("foton");
 
 		function funA() {
@@ -37,13 +37,13 @@
 			}
 		}
 		function funB2() {
-			for (let i = 1; i <= y; i++) {
+			for (let i = 1; i <= y.value; i++) {
 				x.innerHTML += i;
 			}
 		}
 		function funB3() {
 			for (let i = 1; i < 100; i++) {
-				s = i * y;
+				s = i * y.value;
 				x.innerHTML += s;
 			}
 		}
