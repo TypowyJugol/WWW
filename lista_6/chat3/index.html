@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Chat 1</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <style>
+        ul {
+            border: 1px solid black;
+            overflow: scroll;
+            height: 400px;}
+    </style>
+</head>
+
+<body>
+
+    <h2>Pogawędka</h2>
+
+    <form method='post' class='ajax'>
+        <input id='nick' name='nick' placeholder="Podaj imię" autocomplete="off"><br>
+        <input id='text' name='text' style="width:400px" autocomplete="off">
+        <input type=submit name='co'>
+    </form>
+
+    <ul id='chat'></ul>
+    <p>Sukcesywnie napisywana jest część w znaczniuku "ul"(lista nie jest odświeżana, dopisywane są nowe wpisy)</p>
+
+</body>
+
+<script>
+
+    $("#nick").focus();
+
+    var start = 0;
+
+    function reread() {
+        var imie = document.getElementById("nick");
+        $.get("wpisy.php", { start, start }).
+            done(function (dane) {
+                if (dane != '') {
+                    $("#chat").append(dane);
+                    $("#chat script").remove();
+                    imie.value = window.localStorage.getItem("name");
+                }
+            });
+    };
+
+    reread();
+
+    setInterval(reread, 1000);
+
+    $("form.ajax").on("submit",
+        function (e) {
+            var imie = document.getElementById("nick");
+            if ($('#nick').val() == "")
+                return false;
+            $.post("wpisy.php?start=" + start, $(this).serializeArray())
+                .done(function (data) {
+                    $("#chat").append(data);
+                    $("#text").val('').focus();
+                    window.localStorage.setItem("name", imie.value);
+                })
+                .fail(function () {
+                    $("#chat").html("Błąd połączenia");
+                });
+
+            return false;
+        }
+    );
+
+</script>
+
+</html>
