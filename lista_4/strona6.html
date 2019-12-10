@@ -125,12 +125,12 @@
             przedmioty.push(i["kierunek"]);
         });
 
-        przedmioty.forEach(function (a, i) {
-            if (a in dane) {
-                dane[a] += 1;
+        przedmioty.forEach(function (i) {
+            if (i in dane) {
+                dane[i] += 1;
             }
             else {
-                dane[a] = 1;
+                dane[i] = 1;
             }
         });
         s += "<h2>Ilość studentów na kierunkach</h2>";

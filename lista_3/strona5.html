@@ -90,16 +90,18 @@
     var komorki = document.querySelectorAll("td");
     var tr = document.querySelectorAll("tr");
     function f() {
-        for (i = 0; i < komorki.length; i++) {
-            komorki[i].innerText = i;
+        var td=document.querySelectorAll("td");
+        for (i = 0; i < td.length; i++) {
+            td[i].innerText = i;
         }
     }
     function zc() {
-        for (i = 0; i < komorki.length; i = i + 2) {
-            komorki[i].style.background = "green";
+        var td=document.querySelectorAll("td");
+        for (i = 0; i < td.length; i = i + 2) {
+            td[i].style.background = "green";
         }
-        for (i = 1; i < komorki.length; i = i + 2) {
-            komorki[i].style.background = "red";
+        for (i = 1; i < td.length; i = i + 2) {
+            td[i].style.background = "red";
         }
     }
     function td() {
@@ -115,16 +117,18 @@
         }
     }
     function czysc() {
-        for (i = 0; i < komorki.length; i++) {
-            komorki[i].innerText = "";
+        var td=document.querySelectorAll("td");
+        for (i = 0; i < td.length; i++) {
+            td[i].innerText = "";
         }
     }
     function czysctlo() {
-        for (i = 0; i < komorki.length; i = i + 2) {
-            komorki[i].style.background = "grey";
+        var td=document.querySelectorAll("td");
+        for (i = 0; i < td.length; i = i + 2) {
+            td[i].style.background = "grey";
         }
-        for (i = 1; i < komorki.length; i = i + 2) {
-            komorki[i].style.background = "white";
+        for (i = 1; i < td.length; i = i + 2) {
+            td[i].style.background = "white";
         }
     }
     function czyscwiersze() {

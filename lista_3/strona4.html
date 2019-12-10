@@ -27,33 +27,38 @@
     <p>doce</p>
     <p>trece</p>
     <p>catorce</p>
-    <p id="ostatni">quince</p>
+    <p>quince</p>
     <button onclick="pierwsza()">OK</button>
     <button onclick="druga()">Drugi</button>
     <button onclick="trzeci()">Trzeci</button>
 </body>
 <script>
 
-    var paragrafy = document.querySelectorAll("p");
+    
+    var i=0;
 
     function pierwsza() {
+        var paragrafy = document.querySelectorAll("p");
         for (i = 0; i < paragrafy.length; i++) {
             paragrafy[i].style.color = "black";
             paragrafy[i].style.background = "0";
         }
     }
     function druga() {
+        var paragrafy = document.querySelectorAll("p");
         for (i = 0; i < paragrafy.length; i = i + 3) {
             paragrafy[i].style.color = "blue";
             paragrafy[i].style.background = "pink";
         }
     }
     function trzeci() {
+        var paragrafy = document.querySelectorAll("p");
         var kopia = document.createElement("p");
-        var x = document.getElementById("ostatni").innerHTML;
+        var x = paragrafy[i].innerHTML;
         kopia.innerText = x;
         var body = document.querySelector("body");
         body.appendChild(kopia);
+        i++;
     }
 </script>
 
