@@ -22,16 +22,44 @@
             <td></td>
     </table>
     <div id="suma"></div>
-    <input id="a">*<input id="a">=<input id="c">
-    <button id=’akcja’>Kliknij</button>
+    <input id="a">*<input id="b">=<input id="c">
+    <button id="akcja">Kliknij</button>
 </body>
 <script>
     $("p").after("<hr>");   //zadanie1
+
     $("p").prepend("Nieprawda, że");    //zadanie2
+
     $("p").append("To ważne."); //zadanie3
-    $("p").click(function(){
-        $(this).css(display:"none");
+
+    //$("p").click(function(){
+    //    $(this).remove(); //zadanie4
+    //})
+
+    //$("p").click(function(){
+    //    $(this).clone().appendTo($(this));    //zadanie5
+    //});
+
+    $("p:last-of-type").click(function () {
+        $("p:first-of-type").css({ "background-color": "yellow" });  //zadanie6
     });
+
+    $("p").click(function () {
+        $("body").append($(this));  //zadanie7
+    });
+
+    $("input#c").val($("input#a").val() * $("input#b").val());  //zadnie8
+
+    $("input").change(function () {
+        var a = $("input#a").val();
+        var b = $("input#b").val(); //zadanie9
+        $("input#c").val(a * b);
+    });
+
+    $('button#akcja').click(function(){
+        $("p:first-of-type").before("<h2>Tytuł</h2>"); //zadanie10
+    });
+
 </script>
 
 </html>
