@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>strona4</title>
+
+</head>
+
+<body>
+    <button onclick="draw(1.8)">chuj</button>
+    <button onclick="draw(2)">chuj</button>
+    <button onclick="draw(1.5)">chuj</button>
+    <canvas id="rys" width="600" height="600"></canvas>
+
+    <script>
+        var canvas = document.getElementById("rys");
+        var ctx = canvas.getContext("2d");
+
+        function draw(scale) {
+            if (canvas.getContext) {
+                
+                ctx.translate(50, 50);
+                ctx.scale(scale);
+                ctx.translate(-50, -50);
+                ctx.beginPath();
+                ctx.lineTo(100, 75);
+                ctx.lineTo(100, 25);
+                ctx.closePath();
+                ctx.stroke();
+                ctx.setTransform(1, 0, 0, 1, 0, 0);
+            }
+        }
+
+    </script>
+</body>
+
+</html>

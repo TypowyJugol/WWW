@@ -5,27 +5,46 @@
     <meta charset="utf-8">
     <title>strona2</title>
 </head>
-<svg width="1000" height="1000">
-    <defs>
-
-    </defs>
-    <rect x="10" y="200" width="200" height="200" style="fill: brown; stroke:black; stroke-width:1;" />
-    <path d="M 10, 200 l 200, 0 l -100, -75 l -100, 75" style="fill:#FF3300; stroke:black; stroke-width:1;" />
-    <path d="M 140, 375 l 50, 0 l 0, -100 l -50, 0 l 0, 100" style="fill:#996633; stroke:black; stroke-width:1;" />
-    <path d="M 40, 320 l 40, 0 l 0, -40 l -40, 0 l 0, 40" style="fill:lightblue; stroke:black; stroke-width:1;" />
-    <line x1="60" y1="320" x2="60" y2="280" style="stroke:black; stroke-width:1" />
-    <line x1="40" y1="300" x2="80" y2="300" style="stroke:black; stroke-width:1" />
-    <circle cx="60" cy="40" r="25" style="fill:yellow;" />
-    <path d='M 95,60 
-           a 20,20 1 0,0 0,40 
-           h 50 
-           a 20,20 1 0,0 0,-40 
-           a 10,10 1 0,0 -15,-10 
-           a 15,15 1 0,0 -35,10  
-           z' style="fill:deepskyblue;" />
-</svg>
 
 <body>
+    <svg width="1000" height="1000">
+        <rect x="10" y="200" width="200" height="200" style="fill: brown; stroke:black; stroke-width:1;" />
+        <path d="M 10, 200 l 200, 0 l -100, -75 l -100, 75" style="fill:#FF3300; stroke:black; stroke-width:1;" />
+        <path d="M 140, 375 l 50, 0 l 0, -100 l -50, 0 l 0, 100" style="fill:#996633; stroke:black; stroke-width:1;" />
+        <path d="M 40, 320 l 40, 0 l 0, -40 l -40, 0 l 0, 40" style="fill:lightblue; stroke:black; stroke-width:1;" />
+        <line x1="60" y1="320" x2="60" y2="280" style="stroke:black; stroke-width:1" />
+        <line x1="40" y1="300" x2="80" y2="300" style="stroke:black; stroke-width:1" />
+        <circle onclick="slonceanim()" id="slonce" cx="60" cy="40" r="25" style="fill:yellow;" />
+        <path onclick="chmurkaanim()" id="chmurka" d='M 95,60 
+                       a 20,20 1 0,0 0,40 
+                       h 50 
+                       a 20,20 1 0,0 0,-40 
+                       a 10,10 1 0,0 -15,-10 
+                       a 15,15 1 0,0 -35,10  
+                       z' style="fill:deepskyblue;" />
+    </svg>
+    <script>
+        var slonce = document.getElementById("slonce");
+        var chmurka = document.getElementById("chmurka");
+        function slonceanim() {
+            slonce.animate([
+                { transform: 'translateX(0px)' },
+                { transform: 'translateX(100px)' },
+            ], {
+                duration: 2000
+            });
+        }
+        function chmurkaanim() {
+            chmurka.animate([
+                { transform: 'translateX(0px)' },
+                { transform: 'translateX(-80px)' },
+            ], {
+                duration: 2000
+            });
+        }
+
+
+    </script>
 </body>
 
 </html>

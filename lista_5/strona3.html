@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>strona3</title>
+    <style>
+        #ramka {
+            height: 600px;
+            width: 600px;
+            border: 1px solid grey;
+            position: relative;
+        }
+
+        #mieszaj {
+            pointer: hand
+        }
+
+        b {
+            display: block;
+            height: 0px;
+            width: 30px;
+            border-radius: 0px;
+            backgrounds: red;
+            position: absolute
+        }
+
+        h1,
+        div {
+            text-align: center;
+            margin: 10px;
+        }
+
+        img {
+            height: 20px;
+            transform: rotate(45deg);
+        }
+    </style>
+</head>
+
+<body>
+</body>
+
+<h1>Samoloty</h1>
+<p id="licz" style="text-align: center;"></p>
+<p id="czas" style="text-align: center;"></p>
+<div style="margin: auto;">
+    <svg id="ramka">
+        <circle id="slonce" r="25" style="fill:yellow;" />
+        <circle id="slonce" r="25" style="fill:yellow;" />
+        <circle id="slonce" r="25" style="fill:yellow;" />
+    </svg>
+</div>
+
+<div>
+    <button onclick="run=false;"> Stop </button>
+    <button onclick="run=true;step()"> Start </button>
+    <button onclick="nowa()"> Nowa gra </button>
+    <button onclick="p1()"> Poziom 1 </button>
+    <button onclick="p2()"> Poziom 2 </button>
+</div>
+
+
+<script>
+    var b = document.getElementsByTagName("circle");
+    var run = false;
+    var i;
+    var y;
+    var liczba = b.length;
+    var czas = 0;
+    var p1 = true;
+    for (i = 0; i < b.length; i++) {
+        b[i].cy.baseVal.value = Math.random() * 580;
+        b[i].cx.baseVal.value = Math.random() * 580;
+
+        b[i].vx = Math.random() * 20 - 10;
+        b[i].vy = Math.random() * 20 - 10;
+
+        b[i].onmousedown = stop;
+    }
+
+    function step() {
+        var i;
+        licznik();
+        for (i = 0; i < b.length; i++) {
+            b[i].cx.baseVal.value += b[i].vx;
+            b[i].cy.baseVal.value += b[i].vy;
+
+            if (b[i].cx.baseVal.value > 580 || b[i].cx.baseVal.value < 0) b[i].vx *= -1;
+            if (b[i].cy.baseVal.value > 580 || b[i].cy.baseVal.value < 0) b[i].vy *= -1;
+
+        }
+
+        if (run) {
+            if (p1 == true) {
+                setTimeout(step, 60);
+            }
+            else {
+                setTimeout(step, 20);
+            }
+        }
+    }
+
+
+    function licznik() {
+        document.getElementById("licz").innerText = "Ilość samolotów: " + liczba;
+    }
+
+    function stop() {
+        this.vx = 0;
+        this.vy = 0;
+        liczba--;
+        if (liczba == 0) alert("Mission completed in: " + czas);
+    }
+    setInterval(function () {
+        if (run == true) {
+            czas = czas + 0.1;
+        }
+        document.getElementById("czas").innerText = "Czas: " + czas.toFixed(1);
+    }, 100)
+
+    function nowa() {
+        for (let i = 0; i < b.length; i++) {
+            b[i].style.display = "block";
+            b[i].vx = 0;
+            b[i].vy = 0;
+        }
+        var i;
+        for (i = 0; i < b.length; i++) {
+            b[i].x = Math.random() * 580;
+            b[i].y = Math.random() * 580;
+            b[i].vx = Math.random() * 20 - 10;
+            b[i].vy = Math.random() * 20 - 10;
+
+            b[i].style.left = b[i].x + "px";
+            b[i].style.top = b[i].y + "px";
+            b[i].onclick = stop;
+        }
+        liczba = b.length;
+        run = false;
+        czas = 0;
+    }
+
+    function p1() {
+        p1 = true;
+    }
+
+    function p2() {
+        p1 = false;
+    }
+
+</script>
+
+</html>
