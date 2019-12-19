@@ -56,10 +56,52 @@
         $("input#c").val(a * b);
     });
 
-    $('button#akcja').click(function(){
+    $('button#akcja').click(function () {
         $("p:first-of-type").before("<h2>Tytuł</h2>"); //zadanie10
     });
 
+    $("table").click(function () {
+        $(this).css({ "border": "solid red 3px" });    //zadanie11
+    });
+
+    $("button#akcja").click(function () {
+        $("p:last-of-type").remove();   //zadanie12
+    });
+
+    $("button#akcja").click(function () {
+        $("tr").append("<td></td>");    //zadanie13
+    });
+
+    $("button#akcja").click(function () {
+        $("td").text("0");  //zadanie14
+    });
+
+    $("td").click(function () {
+        var x = $(this).text();
+        $("td").text(x);    //zadanie15
+    });
+
+    $("td").click(function () {
+        var x = $(this).text();
+        var xnum = parseInt(x); //zadanie16
+        $(this).text(10 + xnum);
+    });
+
+    $(document).ready(function () {
+        suma = 0;
+        $("table#liczby td").each(function () {
+            var x = $(this).text(); //zadanie17(niedziala)
+            var xnum = parseInt(x);
+            suma += xnum;
+        });
+        $("div#suma").text(suma);
+    });
+
+    $("button#akcja").click(function(){
+        var temp = $("input#a").val();
+        $("input#a").val($("input#b").val());   //zadanie18
+        $("input#b").val(temp);
+    });
 </script>
 
 </html>
