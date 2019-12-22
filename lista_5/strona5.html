@@ -3,36 +3,45 @@
 
 <head>
     <meta charset="utf-8">
-    <title>strona4</title>
+    <title>strona5</title>
 </head>
 
 <body>
     <canvas id="c" width="600" height="600"></canvas>
+    <button onclick="start()">Start</button>
+    <button onclick="stop()">Stop</button>
 
     <script>
         var c = document.getElementById("c");
         var ctx = c.getContext("2d");
+        var temp;
 
-        function domek(x, y, height) {
+        var dane = [
+            { x: 50, y: 50, vx: 2, vy: 2, height: 0.8, rysuj: domek },
+            { x: 100, y: 100, vx: 1, vy: 1, height: 1.1, rysuj: choinka },
+            { x: 200, y: 200, vx: 3, vy: 3, height: 1, rysuj: balwanek }
+        ];
+
+        function tree(x, y, height) {
             ctx.translate(0, 0);
 
             ctx.scale(height, height);
 
-            
-            ctx.translate(x-(2*height), y-(2*height));
+
+            ctx.translate(x - (2 * height), y - (2 * height));
 
             ctx.beginPath();
-            ctx.moveTo(50,50);
+            ctx.moveTo(50, 50);
             ctx.lineTo(100, 50);
             ctx.lineTo(75, 25);
             ctx.fillStyle = "#FF3300";
             ctx.fill();
             ctx.closePath();
             ctx.beginPath();
-            ctx.moveTo(50,50);
-            ctx.lineTo(100,50);
-            ctx.lineTo(100,100);
-            ctx.lineTo(50,100);
+            ctx.moveTo(50, 50);
+            ctx.lineTo(100, 50);
+            ctx.lineTo(100, 100);
+            ctx.lineTo(50, 100);
             ctx.fillStyle = "brown";
             ctx.fill();
             ctx.closePath();
@@ -40,16 +49,16 @@
 
         }
 
-        function choinka(x, y, height) {
+        function house(x, y, height) {
             ctx.translate(0, 0);
 
             ctx.scale(height, height);
 
-            
-            ctx.translate(x-(2*height), y-(2*height));
+
+            ctx.translate(x - (2 * height), y - (2 * height));
 
             ctx.beginPath();
-            ctx.moveTo(50,50);
+            ctx.moveTo(50, 50);
             ctx.lineTo(75, 50);
             ctx.lineTo(75, 75);
             ctx.lineTo(50, 75);
@@ -57,10 +66,10 @@
             ctx.fill();
             ctx.closePath();
             ctx.beginPath();
-            ctx.moveTo(50,50);
-            ctx.lineTo(25,50);
-            ctx.lineTo(62.5,-80);
-            ctx.lineTo(100,50);
+            ctx.moveTo(50, 50);
+            ctx.lineTo(25, 50);
+            ctx.lineTo(62.5, -80);
+            ctx.lineTo(100, 50);
             ctx.fillStyle = "green";
             ctx.fill();
             ctx.closePath();
@@ -68,75 +77,75 @@
 
         }
 
-        function balwanek(x, y, height) {
+        function snowman(x, y, height) {
             ctx.translate(0, 0);
 
             ctx.scale(height, height);
 
-            
-            ctx.translate(x-(2*height), y-(2*height));
+
+            ctx.translate(x - (2 * height), y - (2 * height));
 
             //balwan
             ctx.beginPath();
-            ctx.arc(50,50,75,0,2*Math.PI);
+            ctx.arc(50, 50, 75, 0, 2 * Math.PI);
             ctx.fillStyle = "gray";
             ctx.fill();
             ctx.closePath();
             ctx.beginPath();
-            ctx.arc(50,-55,50,0,2*Math.PI);
+            ctx.arc(50, -55, 50, 0, 2 * Math.PI);
             ctx.fillStyle = "gray";
             ctx.fill();
             ctx.closePath();
             ctx.beginPath();
-            ctx.arc(50,-120,25,0,2*Math.PI);
+            ctx.arc(50, -120, 25, 0, 2 * Math.PI);
             ctx.fillStyle = "gray";
             ctx.fill();
             ctx.closePath();
             //oczy
             ctx.beginPath();
-            ctx.arc(40,-128,2.5,0,2*Math.PI);
+            ctx.arc(40, -128, 2.5, 0, 2 * Math.PI);
             ctx.fillStyle = "black";
             ctx.fill();
             ctx.closePath();
             ctx.beginPath();
-            ctx.arc(60,-128,2.5,0,2*Math.PI);
+            ctx.arc(60, -128, 2.5, 0, 2 * Math.PI);
             ctx.fillStyle = "black";
             ctx.fill();
             ctx.closePath();
             //guziki
             ctx.beginPath();
-            ctx.arc(50,-60,2.5,0,2*Math.PI);
+            ctx.arc(50, -60, 2.5, 0, 2 * Math.PI);
             ctx.fillStyle = "black";
             ctx.fill();
             ctx.closePath();
             ctx.beginPath();
-            ctx.arc(50,-30,2.5,0,2*Math.PI);
+            ctx.arc(50, -30, 2.5, 0, 2 * Math.PI);
             ctx.fillStyle = "black";
             ctx.fill();
             ctx.closePath();
             ctx.beginPath();
-            ctx.arc(50,10,2.5,0,2*Math.PI);
+            ctx.arc(50, 10, 2.5, 0, 2 * Math.PI);
             ctx.fillStyle = "black";
             ctx.fill();
             ctx.closePath();
             ctx.beginPath();
-            ctx.arc(50,40,2.5,0,2*Math.PI);
+            ctx.arc(50, 40, 2.5, 0, 2 * Math.PI);
             ctx.fillStyle = "black";
             ctx.fill();
             ctx.closePath();
             ctx.beginPath();
-            ctx.arc(50,70,2.5,0,2*Math.PI);
+            ctx.arc(50, 70, 2.5, 0, 2 * Math.PI);
             ctx.fillStyle = "black";
             ctx.fill();
             ctx.closePath();
             //ręce
             ctx.beginPath();
-            ctx.moveTo(100,-55);
+            ctx.moveTo(100, -55);
             ctx.lineTo(155, -85);
             ctx.stroke();
             ctx.closePath();
             ctx.beginPath();
-            ctx.moveTo(0,-55);
+            ctx.moveTo(0, -55);
             ctx.lineTo(-55, -85);
             ctx.stroke();
             ctx.closePath();
@@ -144,15 +153,43 @@
 
         }
 
+        function domek() {
+            house(this.x, this.y, this.height)
+        }
+        function choinka() {
+            tree(this.x, this.y, this.height)
+        }
+        function balwanek() {
+            snowman(this.x, this.y, this.height)
+        }
 
-        domek(20, 40, 1);
-        domek(250, 800, 0.5);
-        choinka(50, 350, 0.6);
-        choinka(135, 80, 1.1);
-        balwanek(120, 900, 0.4);
-        balwanek(200, 300, 1.2);
-        
-    
+        function redraw(dane) {
+            ctx.clearRect(0, 0, 600, 600);
+            for (let x of dane) {
+                x.rysuj();
+            }
+        }
+
+        function ruch() {
+            if (temp == true) {
+                for (let f of dane) {
+                    f.x += f.vx; if (f.x < 0 || f.x > 600) f.vx *= -1;
+                    f.y += f.vy; if (f.y < 0 || f.y > 600) f.vy *= -1;
+                }
+                redraw(dane);
+            }
+
+        }
+        ruch = setInterval(ruch, 10);
+
+        function start() {
+            temp = true;
+        }
+
+        function stop() {
+            temp = false;
+        }
+
     </script>
 </body>
 

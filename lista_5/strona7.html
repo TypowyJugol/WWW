@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>strona7</title>
+</head>
+
+<body>
+    <canvas id="c" width="600" height="600"></canvas>
+    <button onclick="start()">Start</button>
+    <button onclick="stop()">Stop</button>
+    <button onclick="dodaj()">Dodaj</button>
+    <select id="typ">
+        <option value=1>choinka</option>
+        <option value=2>domek</option>
+        <option value=3>bałwanek</option>
+    </select>
+    <input id="x" placeholder="x">
+    <input id="y" placeholder="y">
+    <input id="vx" placeholder="vx">
+    <input id="vy" placeholder="vy">
+    <input id="height" placeholder="skala">
+    <div id="usuwanie"></div>
+
+    <script>
+        var c = document.getElementById("c");
+        var ctx = c.getContext("2d");
+        var temp;
+        var div = document.getElementById("usuwanie");
+
+        var dane = [
+            { x: 50, y: 50, vx: 2, vy: 2, height: 0.8, rysuj: domek },
+            { x: 100, y: 100, vx: 1, vy: 1, height: 1.1, rysuj: choinka },
+            { x: 200, y: 200, vx: 3, vy: 3, height: 1, rysuj: balwanek }
+        ];
+
+        function house(x, y, height) {
+            ctx.translate(0, 0);
+
+            ctx.scale(height, height);
+
+
+            ctx.translate(x - (2 * height), y - (2 * height));
+
+            ctx.beginPath();
+            ctx.moveTo(50, 50);
+            ctx.lineTo(100, 50);
+            ctx.lineTo(75, 25);
+            ctx.fillStyle = "#FF3300";
+            ctx.fill();
+            ctx.closePath();
+            ctx.beginPath();
+            ctx.moveTo(50, 50);
+            ctx.lineTo(100, 50);
+            ctx.lineTo(100, 100);
+            ctx.lineTo(50, 100);
+            ctx.fillStyle = "brown";
+            ctx.fill();
+            ctx.closePath();
+            ctx.setTransform(1, 0, 0, 1, 0, 0);
+
+        }
+
+        function tree(x, y, height) {
+            ctx.translate(0, 0);
+
+            ctx.scale(height, height);
+
+
+            ctx.translate(x - (2 * height), y - (2 * height));
+
+            ctx.beginPath();
+            ctx.moveTo(50, 50);
+            ctx.lineTo(75, 50);
+            ctx.lineTo(75, 75);
+            ctx.lineTo(50, 75);
+            ctx.fillStyle = "brown";
+            ctx.fill();
+            ctx.closePath();
+            ctx.beginPath();
+            ctx.moveTo(50, 50);
+            ctx.lineTo(25, 50);
+            ctx.lineTo(62.5, -80);
+            ctx.lineTo(100, 50);
+            ctx.fillStyle = "green";
+            ctx.fill();
+            ctx.closePath();
+            ctx.setTransform(1, 0, 0, 1, 0, 0);
+
+        }
+
+        function snowman(x, y, height) {
+            ctx.translate(0, 0);
+
+            ctx.scale(height, height);
+
+
+            ctx.translate(x - (2 * height), y - (2 * height));
+
+            //balwan
+            ctx.beginPath();
+            ctx.arc(50, 50, 75, 0, 2 * Math.PI);
+            ctx.fillStyle = "gray";
+            ctx.fill();
+            ctx.closePath();
+            ctx.beginPath();
+            ctx.arc(50, -55, 50, 0, 2 * Math.PI);
+            ctx.fillStyle = "gray";
+            ctx.fill();
+            ctx.closePath();
+            ctx.beginPath();
+            ctx.arc(50, -120, 25, 0, 2 * Math.PI);
+            ctx.fillStyle = "gray";
+            ctx.fill();
+            ctx.closePath();
+            //oczy
+            ctx.beginPath();
+            ctx.arc(40, -128, 2.5, 0, 2 * Math.PI);
+            ctx.fillStyle = "black";
+            ctx.fill();
+            ctx.closePath();
+            ctx.beginPath();
+            ctx.arc(60, -128, 2.5, 0, 2 * Math.PI);
+            ctx.fillStyle = "black";
+            ctx.fill();
+            ctx.closePath();
+            //guziki
+            ctx.beginPath();
+            ctx.arc(50, -60, 2.5, 0, 2 * Math.PI);
+            ctx.fillStyle = "black";
+            ctx.fill();
+            ctx.closePath();
+            ctx.beginPath();
+            ctx.arc(50, -30, 2.5, 0, 2 * Math.PI);
+            ctx.fillStyle = "black";
+            ctx.fill();
+            ctx.closePath();
+            ctx.beginPath();
+            ctx.arc(50, 10, 2.5, 0, 2 * Math.PI);
+            ctx.fillStyle = "black";
+            ctx.fill();
+            ctx.closePath();
+            ctx.beginPath();
+            ctx.arc(50, 40, 2.5, 0, 2 * Math.PI);
+            ctx.fillStyle = "black";
+            ctx.fill();
+            ctx.closePath();
+            ctx.beginPath();
+            ctx.arc(50, 70, 2.5, 0, 2 * Math.PI);
+            ctx.fillStyle = "black";
+            ctx.fill();
+            ctx.closePath();
+            //ręce
+            ctx.beginPath();
+            ctx.moveTo(100, -55);
+            ctx.lineTo(155, -85);
+            ctx.stroke();
+            ctx.closePath();
+            ctx.beginPath();
+            ctx.moveTo(0, -55);
+            ctx.lineTo(-55, -85);
+            ctx.stroke();
+            ctx.closePath();
+            ctx.setTransform(1, 0, 0, 1, 0, 0);
+
+        }
+
+        function domek() {
+            house(this.x, this.y, this.height)
+        }
+        function choinka() {
+            tree(this.x, this.y, this.height)
+        }
+        function balwanek() {
+            snowman(this.x, this.y, this.height)
+        }
+
+        function redraw(dane) {
+            ctx.clearRect(0, 0, 600, 600);
+            for (let x of dane) {
+                x.rysuj();
+            }
+        }
+
+        function ruch() {
+            if (temp == true) {
+                for (let f of dane) {
+                    f.x += f.vx; if (f.x < 0 || f.x > 600) f.vx *= -1;
+                    f.y += f.vy; if (f.y < 0 || f.y > 600) f.vy *= -1;
+                }
+                redraw(dane);
+            }
+
+        }
+        ruch = setInterval(ruch, 10);
+
+        function start() {
+            temp = true;
+        }
+
+        function stop() {
+            temp = false;
+        }
+
+        function dodaj() {
+            var x1 = parseInt(document.getElementById("x").value);
+            var y1 = parseInt(document.getElementById("y").value);
+            var vx1 = parseInt(document.getElementById("vx").value);
+            var vy1 = parseInt(document.getElementById("vy").value);
+            var skala = parseInt(document.getElementById("height").value);
+            var typ = document.getElementById("typ").value;
+            if (typ == 1) {
+                dane.push({ x: x1, y: y1, vx: vx1, vy: vy1, height: skala, rysuj: choinka });
+            }
+            if (typ == 2) {
+                dane.push({ x: x1, y: y1, vx: vx1, vy: vy1, height: skala, rysuj: domek });
+            }
+            if (typ == 3) {
+                dane.push({ x: x1, y: y1, vx: vx1, vy: vy1, height: skala, rysuj: balwanek });
+            }
+        }
+        
+        function usuwanie(){
+            div.innerHTML = "";
+            for(i in dane){
+                div.innerHTML += "<button id ='" + i +"' onclick='usun(" + i + ")'>Usun " + i +"</button>"
+            }
+        }
+        function usun(i){
+            dane.splice(i,1);
+        }
+        usuwanie();
+        usuwanie = setInterval(usuwanie, 650);
+    </script>
+</body>
+
+</html>
