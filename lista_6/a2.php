@@ -1,12 +1,12 @@
 <?php
 include "0begin.php";
 ?>
-<h1> Czym się interesuję </h1>
+<h2 style="text-align: center"> Czym się interesuję </h2>
 <?php
 
-$a=array("Piłka nożna","Kolarstwo","Motoryzacja i sporty motorowe","Informatyka","Gry komputerowe","Polityka");
+$a = array("Piłka nożna", "Kolarstwo", "Motoryzacja i sporty motorowe", "Informatyka", "Gry komputerowe", "Polityka");
 
-foreach($a as $x)
+foreach ($a as $x)
     echo "<li>$x</li>";
 ?>
 <?php
