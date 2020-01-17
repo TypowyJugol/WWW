@@ -1,7 +1,7 @@
 <?php
 include "0begin.php";
 ?>
-<h2 style="text-align: center">Strona trzecia</h2>
+<h2 style="text-align: center">Lista plików</h2>
 Jakie pliki są w folderze img:
 
 <ul>
