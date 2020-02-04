@@ -30,6 +30,8 @@
 <script>
     var x = 50;
     var y = 50;
+    var vx = 0;
+    var vy = 0;
     $(document).keydown(function (event) {
         b = document.getElementById("kwadrat");
         var a = event.keyCode;
@@ -61,18 +63,9 @@
             y += vy;
             $("#ramka").append('<b id="kwadrat" style="left:' + x + 'px;top:' + y + 'px"></b>');
         } //strzałka w dół
+        $('#ramka> :first').remove()
 
     });
-    function start() {
-        var b = document.getElementById("kwadrat");
-
-        b.x = Math.random() * 480 + 20;
-        b.y = Math.random() * 480 + 20;
-
-        b.style.left = b.x + "px";
-        b.style.top = b.y + "px";
-
-    }
     
     //setInterval(step(),10);
 </script>
