@@ -24,7 +24,7 @@
 
 <body>
     <div id="ramka">
-        
+        <b id="kwadrat" style="left: 50px; top:50px"></b>
     </div>
 </body>
 <script>
@@ -32,42 +32,59 @@
     var y = 50;
     var vx = 0;
     var vy = 0;
+    var tx=[];
+    var ty=[];
+    var i = 0;
+    var test = 0;
     $(document).keydown(function (event) {
         b = document.getElementById("kwadrat");
         var a = event.keyCode;
         if (a == 37) {
             vx = -20;
             vy = 0;
-            x += vx;
-            y += vy;
-            $("#ramka").append('<b id="kwadrat" style="left:' + x + 'px;top:' + y + 'px"></b>');
         } //strzałka w lewo
         if (a == 38) {
             vx = 0;
             vy = -20;
-            x += vx;
-            y += vy;
-            $("#ramka").append('<b id="kwadrat" style="left:' + x + 'px;top:' + y + 'px"></b>');
         } //strzałka w górę
         if (a == 39) {
             vx = 20;
             vy = 0;
-            x += vx;
-            y += vy;
-            $("#ramka").append('<b id="kwadrat" style="left:' + x + 'px;top:' + y + 'px"></b>');
         } //strzałka w prawo
         if (a == 40) {
             vx = 0;
             vy = 20;
-            x += vx;
-            y += vy;
-            $("#ramka").append('<b id="kwadrat" style="left:' + x + 'px;top:' + y + 'px"></b>');
         } //strzałka w dół
-        $('#ramka> :first').remove()
-
     });
-    
-    //setInterval(step(),10);
+
+
+    var step = setInterval(function(){x += vx;
+        y += vy;
+        tx.push(x);
+        ty.push(y);
+        $("#ramka").append('<b id="kwadrat" style="left:' + x + 'px;top:' + y + 'px"></b>');
+        if (i==5){
+        i=0;
+        x += vx;
+        y += vy;
+        tx.push(x);
+        ty.push(y);
+        $("#ramka").append('<b id="kwadrat" style="left:' + x + 'px;top:' + y + 'px"></b>');
+        }
+        $('#ramka> :first').remove();
+        tx.shift();
+        ty.shift();
+        if ((x>500 || x<0)||(y>500 || y<0)){
+            alert("Przegrałeś");
+        }
+        i++;
+        
+        for (t=0;t<tx.length-1;t++){
+            if((x==tx[t])&&(y==ty[t])){
+                alert("Przegrałeś");
+            }
+        }},100);
+
 </script>
 
 </html>
