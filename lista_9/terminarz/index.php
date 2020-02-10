@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -15,8 +16,13 @@
 <?php
 
 
+if($_GET['id']=='dodaj')
+include "terminarz_dodaj.php";
+else  if(intval($_GET['id']))
+    include "terminarz_edit.php";
+else 
+include "terminarz_tabela.php";
 
-    include "table.php";
 ?>
 </body>
 </html>
