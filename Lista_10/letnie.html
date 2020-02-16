@@ -16,7 +16,10 @@
             color: #eeeeee;
             text-decoration: none;
         }
-        h2,p,b{left: 50%; position: relative;}
+        h2,p{position: relative; text-align: center;}
+        p#cena{color: red; font-weight: bold;}
+        img#przedmiot{width: 15%; height: auto;}
+        img#button{margin-left: auto; margin-right: auto; display: block; width: 20%;}
     </style>
 </head>
 
@@ -34,10 +37,19 @@
 
     <div style="background-color: #eeeeee; height: 90%; width: 80%; margin: auto;">
         <div>
-            <img src="continental_letnia.jpg" style="width: 220px; height: auto;"><div style="float: right; width: 70%;">
+            <img id="przedmiot" src="continental_letnia.jpg"><div style="float: right; width: 80%;">
             <h2>Continental PremiumContact 6 205/55 R16 91 V</h2>
             <p>Opona marki Continental</p>
-            <b>300 zł</b>
+            <p id="cena">300 zł</p>
+            <img id="button" src="kup_teraz_button.jpg">
+            </div>
+        </div>
+        <div>
+            <img id="przedmiot" src="michelin_letnia.jpg"><div style="float: right; width: 80%;">
+            <h2>Michelin Primacy 4 205/55 R16</h2>
+            <p>Opona marki Michelin</p>
+            <p id="cena">350 zł</p>
+            <img id="button" src="kup_teraz_button.jpg">
             </div>
         </div>
     </div>
