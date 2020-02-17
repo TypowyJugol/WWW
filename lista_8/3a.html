@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>jQuery UI Droppable - Shopping Cart Demo</title>
+  <link rel="stylesheet" href="http://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+  <script src="http://code.jquery.com/jquery-1.10.2.js"></script>
+  <script src="http://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+  <style>
+  #box,#box2 {width:600px;margin:10px auto;clear:both}
+  #box>div{ 
+	  width: 200px; 
+	  height: 200px; 
+	  float: left; 
+	  box-sizing:border-box ;
+      border:1px solid green;
+      background:#eee
+   }
+   #box2>div { 
+	  width: 200px; 
+	  height: 200px; 
+	  float: left; 
+	  box-sizing:border-box ;
+      border:1px solid green;
+   }
+   #box>div.active {background:#ddf}    
+   #box>div.hover {background:#eff}
+   div.puzzle{background-image: url("aventador.jpg"); background-size: 300%; width: 200px; height: 200px;}    
+  </style>
+  <script>
+  $(function() {
+    for(i=0; i < $("#box2").children().length; i++)//losowe rozkładanie puzzli po ekranie(splice usuwa losowo wybrany div z fragmentem zdjęcia, a append dodaje go na koniec)
+    {
+      $("#box2").append($("#box2").children().splice(Math.floor(Math.random() * $("#box2").children().length),1));
+    }
+
+    $( "div.puzzle" ).draggable({
+      appendTo: "body",
+      helper: "clone",
+    });
+    
+    $( "#box >div" ).droppable({
+      activeClass: "active",
+      hoverClass: "hover",
+      accept:function(a){ return $(this).html()=='';},//można położyć tylko jeśli puste pole
+      drop: function( event, ui ) { ui.draggable.appendTo( this ); }
+    });
+  });
+  </script>
+</head>
+<body>
+
+<div id="box">
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+</div>
+<div id="box2">
+    <div class="puzzle" style='background-position: 0% 0%;'></div>
+    <div class="puzzle" style='background-position: 50% 0%;'></div>
+    <div class="puzzle" style='background-position: 100% 0%;'></div>
+    <div class="puzzle" style='background-position: 0% 50%;'></div>
+    <div class="puzzle" style='background-position: 50% 50%;'></div>
+    <div class="puzzle" style='background-position: 100% 50%;'></div>
+    <div class="puzzle" style='background-position: 0% 100%;'></div>
+    <div class="puzzle" style='background-position: 50% 100%;'></div>
+    <div class="puzzle" style='background-position: 100% 100%;'></div>
+</div>
+
+</body>
+</html>
